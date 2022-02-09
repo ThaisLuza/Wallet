@@ -16,10 +16,10 @@ class Login extends Component {
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
-  onSubmitForm() {
-    const { history } = this.props;
-    history.push('/carteira');
-  }
+  // onSubmitForm() {
+  //   const { history } = this.props;
+  //   history.push('/carteira');
+  // }
 
   handleChange({ target }) {
     const { name, value } = target;
