@@ -1,17 +1,22 @@
 // Esse reducer será responsável por tratar as informações da pessoa usuária
-export const LOGIN_TYPE = 'LOGIN';
+import { LOGIN_TYPE } from '../actions';
 
-const INITIAL_STATE = { email: '' };
+const INITIAL_STATE = {
+  user: {
+    email: '',
+  },
+};
 
-function login(state = INITIAL_STATE, action) {
+function loginReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-  case LOGIN_TYPE: {
-    const { email } = action.value;
-    return { email };
-  }
+  case LOGIN_TYPE:
+    return {
+      ...state,
+      user: action.payload,
+    };
   default:
     return state;
   }
 }
 
-export default login;
+export default loginReducer;
