@@ -7,13 +7,11 @@ import {
 } from '../actions';
 
 const INITIAL_STATE = {
-  wallet: {
-    currencies: [],
-    expenses: [],
-  },
+  currencies: [],
+  expenses: [],
 };
 
-function walletReducer(state = INITIAL_STATE, action) {
+function wallet(state = INITIAL_STATE, action) {
   switch (action.type) {
   case GET_CURRENCIES_TYPE:
     return {
@@ -32,4 +30,4 @@ function walletReducer(state = INITIAL_STATE, action) {
   }
 }
 
-export default walletReducer;
+export default wallet;

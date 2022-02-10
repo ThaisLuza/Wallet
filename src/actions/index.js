@@ -4,9 +4,9 @@ export const GET_CURRENCIES_TYPE = 'GET_CURRENCY';
 export const CREATE_EXPENSE_TYPE = 'CREATE_EXPENSE';
 export const DELETE_EXPENSE_TYPE = 'DELETE_EXPENSE';
 
-export const login = (payload) => ({
+export const login = (email) => ({
   type: LOGIN_TYPE,
-  payload,
+  email,
 });
 
 export const getCurrencies = (payload) => ({

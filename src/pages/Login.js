@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Input from '../components/Input';
-import Button from '../components/Button';
+import { login } from '../actions/index';
 
 class Login extends Component {
   constructor() {
@@ -9,17 +11,27 @@ class Login extends Component {
     this.state = {
       email: '',
       senha: '',
-      isDisabled: true,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
-  // onSubmitForm() {
-  //   const { history } = this.props;
-  //   history.push('/carteira');
-  // }
+  onSubmitForm() {
+    const { history, dispatchEmail } = this.props;
+    const { email } = this.state;
+    dispatchEmail(email);
+    history.push('/carteira');
+  }
+
+  disableButton(email, senha) {
+    const minLength = 6;
+    const senhaValida = senha.length >= minLength;
+    const codeValidar = /\S+@\S+\.\S+/;
+    const emailValido = codeValidar.test(email);
+    const habilitarBotao = !emailValido || !senhaValida;
+    return habilitarBotao;
+  }
 
   handleChange({ target }) {
     const { name, value } = target;
@@ -27,36 +39,50 @@ class Login extends Component {
   }
 
   render() {
-    const { email, senha, isDisabled } = this.state;
+    const { email, senha } = this.state;
     return (
       <fieldset>
         <Input
-          data-testid="email-input"
           label="email: "
           type="email"
           onChange={ this.handleChange }
           value={ email }
           name="email"
           required
+          datatestid="email-input"
         />
         <Input
-          data-testid="password-input"
-          minlength="6"
+          minLength="6"
           label="senha: "
           type="password"
           onChange={ this.handleChange }
           value={ senha }
           name="senha"
           required
+          datatestid="password-input"
         />
-        <Button
+
+        <button
           type="submit"
-          label="Entrar"
-          disabled={ isDisabled }
+          disabled={ this.disableButton(email, senha) }
           onClick={ this.onSubmitForm }
-        />
+        >
+          Entrar
+        </button>
       </fieldset>
     );
   }
 }
-export default Login;
+
+Login.propTypes = {
+  dispatchEmail: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchEmail: (email) => dispatch(login(email)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);

@@ -2,21 +2,19 @@
 import { LOGIN_TYPE } from '../actions';
 
 const INITIAL_STATE = {
-  user: {
-    email: '',
-  },
+  email: '',
 };
 
-function loginReducer(state = INITIAL_STATE, action) {
+function user(state = INITIAL_STATE, action) {
   switch (action.type) {
   case LOGIN_TYPE:
     return {
       ...state,
-      user: action.payload,
+      email: action.email,
     };
   default:
     return state;
   }
 }
 
-export default loginReducer;
+export default user;
