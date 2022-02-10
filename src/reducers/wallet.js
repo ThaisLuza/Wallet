@@ -16,12 +16,12 @@ function wallet(state = INITIAL_STATE, action) {
   case GET_CURRENCIES_TYPE:
     return {
       ...state,
-      wallet: action.payload.currencies,
+      currencies: action.payload.currencies,
     };
   case CREATE_EXPENSE_TYPE:
     return {
       ...state,
-      wallet: action.payload.expenses,
+      expenses: action.payload,
     };
   case DELETE_EXPENSE_TYPE:
     return state.filter((register) => register !== action.value);

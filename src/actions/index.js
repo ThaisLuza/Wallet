@@ -29,7 +29,7 @@ export const deleteExpense = (payload) => ({
 export const getCoins = () => async (dispatch) => {
   try {
     const coins = await getApi();
-    dispatch(createExpense(coins));
+    dispatch(getCurrencies(coins));
   } catch (error) {
     console.error(error.message);
   }
