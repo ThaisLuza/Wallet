@@ -1,4 +1,6 @@
 // Coloque aqui suas actions
+import getApi from '../services/getApi';
+
 export const LOGIN_TYPE = 'LOGIN';
 export const GET_CURRENCIES_TYPE = 'GET_CURRENCY';
 export const CREATE_EXPENSE_TYPE = 'CREATE_EXPENSE';
@@ -23,3 +25,12 @@ export const deleteExpense = (payload) => ({
   type: DELETE_EXPENSE_TYPE,
   payload,
 });
+
+export const getCoins = () => async (dispatch) => {
+  try {
+    const coins = await getApi();
+    dispatch(createExpense(coins));
+  } catch (error) {
+    console.error(error.message);
+  }
+};
