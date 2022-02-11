@@ -1,76 +1,104 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Input from './Input';
-import { createExpense } from '../actions';
+// import Input from './Input';
+import { API, fetchAPI } from '../actions';
 
 class ExpensesForm extends Component {
   constructor() {
     super();
 
     this.state = {
-      despesa: 0,
+      id: 0,
+      despesa: '',
       descricao: '',
-      moeda: '',
-      metodo: '',
+      moeda: 'USD',
+      metodo: 'Dinheiro',
       tag: '',
+      todasMoedas: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
-  // handleChange({ target }) {
-  //   const { name, value } = target;
-  //   this.setState({ [name]: value });
-  // }
+  componentDidMount() {
+    fetch(API)
+      .then((response) => response.json())
+      .then((data) => this.setState({ todasMoedas: Object.keys(data) }));
+  }
 
   onSubmitForm() {
     const { dispatchDespesas } = this.props;
-    const { despesa, descricao, moeda, metodo, tag } = this.state;
-    dispatchDespesas({ despesa, descricao, moeda, metodo, tag });
+    const { id, despesa, descricao, moeda, metodo, tag } = this.state;
+    dispatchDespesas({ id, despesa, descricao, moeda, metodo, tag });
+    this.setState((prevState) => ({
+      id: prevState.id + 1,
+      despesa: '',
+      descricao: '',
+      moeda: 'USD',
+      metodo: 'Dinheiro',
+      tag: 'Alimentação',
+    }));
   }
 
   handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
-    this.setState({
-      [name]: value,
-    }, this.onSaveButton);
+    this.setState(
+      {
+        [name]: value,
+      },
+      this.onSaveButton,
+    );
   }
 
   render() {
-    const { despesa, descricao, moeda, metodo, tag } = this.state;
+    // const { listaDespesas } = this.props;
+    const { despesa, descricao, moeda, metodo, tag, todasMoedas } = this.state;
     return (
       <div>
-        <Input
-          label="Adicionar despesa: "
-          type="text"
-          onChange={ this.handleChange }
-          value={ despesa }
-          name="despesa"
-          required
-          data-testid="value-input"
-        />
-        <Input
-          label="Descrição da despesa: "
-          type="text"
-          onChange={ this.handleChange }
-          value={ descricao }
-          name="descricao"
-          required
-          data-testid="description-input"
-        />
-        <Input
-          label="Moeda: "
-          type="text"
-          onChange={ this.handleChange }
-          value={ moeda }
-          name="moeda"
-          required
-          data-testid="currency-input"
-        />
+        <label htmlFor="despesa">
+          Despesa
+          <input
+            type="text"
+            onChange={ this.handleChange }
+            value={ despesa }
+            name="despesa"
+            required
+            data-testid="value-input"
+          />
+        </label>
+        <label htmlFor="descricao">
+          Descrição
+          <input
+            type="text"
+            onChange={ this.handleChange }
+            value={ descricao }
+            name="descricao"
+            required
+            data-testid="description-input"
+          />
+        </label>
+        <label htmlFor="moeda">
+          Moeda
+          <select
+            name="moeda"
+            id="moeda"
+            data-testid="currency-input"
+            value={ moeda }
+            onChange={ this.handleChange }
+          >
+            {' '}
+            {todasMoedas
+              && todasMoedas.map(
+                (data, key) => data !== 'USDT'
+                  && <option key={ key }>{data}</option>,
+              )}
+          </select>
+        </label>
+
         <label htmlFor="metodo">
           Método de pagamento
           <select
@@ -101,10 +129,7 @@ class ExpensesForm extends Component {
             <option value="saude">Saúde</option>
           </select>
         </label>
-        <button
-          onClick={ this.onSubmitForm }
-          type="submit"
-        >
+        <button onClick={ this.onSubmitForm } type="submit">
           Adicionar despesa
         </button>
       </div>
@@ -114,10 +139,15 @@ class ExpensesForm extends Component {
 
 ExpensesForm.propTypes = {
   dispatchDespesas: PropTypes.func.isRequired,
+  // listaDespesas: PropTypes.string.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatchDespesas: (payload) => dispatch(createExpense(payload)),
+const mapStateToProps = (state) => ({
+  listaDespesas: state.wallet.expenses,
 });
 
-export default connect(null, mapDispatchToProps)(ExpensesForm);
+const mapDispatchToProps = (dispatch) => ({
+  dispatchDespesas: (obj) => dispatch(fetchAPI(obj)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpensesForm);
