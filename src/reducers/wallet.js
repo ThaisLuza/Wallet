@@ -17,10 +17,11 @@ function wallet(state = INITIAL_STATE, action) {
     return {
       ...state,
       expenses: [...state.expenses, {
-        despesa: action.obj.despesa,
-        descricao: action.obj.descricao,
-        moeda: action.obj.moeda,
-        metodo: action.obj.metodo,
+        id: action.obj.id,
+        value: action.obj.value,
+        description: action.obj.description,
+        currency: action.obj.currency,
+        method: action.obj.method,
         tag: action.obj.tag,
         exchangeRates: action.payload,
       }],
