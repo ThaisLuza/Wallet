@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Input from '../components/Input';
 import { login } from '../actions/index';
+import '../style/login.css';
 
 class Login extends Component {
   constructor() {
@@ -42,6 +43,7 @@ class Login extends Component {
     const { email, senha } = this.state;
     return (
       <fieldset>
+        <h1>TrybeWallet</h1>
         <Input
           label="email: "
           type="email"

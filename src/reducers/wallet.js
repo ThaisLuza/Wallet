@@ -2,7 +2,6 @@
 
 import {
   GET_COINS_TYPE,
-  // CREATE_EXPENSE_TYPE,
   DELETE_EXPENSE_TYPE,
 } from '../actions';
 
@@ -26,14 +25,11 @@ function wallet(state = INITIAL_STATE, action) {
         exchangeRates: action.payload,
       }],
     };
-  // case CREATE_EXPENSE_TYPE:
-  //   return {
-  //     ...state,
-  //     expenses: action.payload,
-  //     currencies: action.payload,
-  //   };
   case DELETE_EXPENSE_TYPE:
-    return state.filter((register) => register !== action.value);
+    return {
+      ...state,
+      expenses: [...state.expenses.filter((obj) => obj.id !== action.payload)],
+    };
   default:
     return state;
   }

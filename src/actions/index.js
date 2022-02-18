@@ -1,6 +1,3 @@
-// Coloque aqui suas actions
-// import getApi from '../services/getApi';
-
 export const LOGIN_TYPE = 'LOGIN';
 export const GET_COINS_TYPE = 'GET_COINS';
 export const CREATE_EXPENSE_TYPE = 'CREATE_EXPENSE';
@@ -10,11 +7,6 @@ export const login = (email) => ({
   type: LOGIN_TYPE,
   email,
 });
-
-// export const getTotal = (payload) => ({
-//   type: GET_TOTAL_TYPE,
-//   payload,
-// });
 
 export const getCoins = (payload, obj) => ({
   type: GET_COINS_TYPE,
