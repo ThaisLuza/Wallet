@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteExpense } from '../actions';
+import '../styles/table.css';
 
 class Table extends Component {
   render() {
@@ -29,7 +30,7 @@ class Table extends Component {
               <td>{item.tag}</td>
               <td>{item.method}</td>
               <td>{Number(item.value).toFixed(2)}</td>
-              <td>{item.exchangeRates[item.currency].name}</td>
+              <td>{item.exchangeRates[item.currency].name.split('/')[0]}</td>
               <td>
                 {Number(item.exchangeRates[item.currency].ask).toFixed(2)}
               </td>
@@ -40,7 +41,7 @@ class Table extends Component {
                 ).toFixed(2)}
               </td>
               <td>Real</td>
-              <td>
+              <td className="btnDelete">
                 <button
                   onClick={ () => dispatchDelete(item.id) }
                   type="button"

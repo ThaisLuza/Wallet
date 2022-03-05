@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Input from '../components/Input';
 import { login } from '../actions/index';
+import '../styles/login.css';
 
 class Login extends Component {
   constructor() {
@@ -41,36 +42,43 @@ class Login extends Component {
   render() {
     const { email, senha } = this.state;
     return (
-      <fieldset>
-        <h1>TrybeWallet</h1>
-        <Input
-          label="email: "
-          type="email"
-          onChange={ this.handleChange }
-          value={ email }
-          name="email"
-          required
-          datatestid="email-input"
-        />
-        <Input
-          minLength="6"
-          label="senha: "
-          type="password"
-          onChange={ this.handleChange }
-          value={ senha }
-          name="senha"
-          required
-          datatestid="password-input"
-        />
+      <div className="divLogin">
+        <fieldset>
+          <img
+            src="https://images.vexels.com/media/users/3/157107/isolated/preview/ccd65f02db5b04645112801d922cdffe-icones-de-viagens-do-icone-da-carteira.png"
+            alt="carteira"
+          />
+          <h1>TrybeWallet</h1>
+          <Input
+            label="Email: "
+            type="email"
+            onChange={ this.handleChange }
+            value={ email }
+            name="email"
+            required
+            datatestid="email-input"
+          />
+          <Input
+            minLength="6"
+            label="Senha: "
+            type="password"
+            onChange={ this.handleChange }
+            value={ senha }
+            name="senha"
+            required
+            datatestid="password-input"
+          />
 
-        <button
-          type="submit"
-          disabled={ this.disableButton(email, senha) }
-          onClick={ this.onSubmitForm }
-        >
-          Entrar
-        </button>
-      </fieldset>
+          <button
+            className={ this.disableButton(email, senha) ? 'disabled' : 'enabled' }
+            type="submit"
+            disabled={ this.disableButton(email, senha) }
+            onClick={ this.onSubmitForm }
+          >
+            Entrar
+          </button>
+        </fieldset>
+      </div>
     );
   }
 }

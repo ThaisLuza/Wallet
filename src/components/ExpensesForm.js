@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { API, fetchAPI } from '../actions';
+import '../styles/expenses.css';
 
 class ExpensesForm extends Component {
   constructor() {
@@ -12,7 +13,7 @@ class ExpensesForm extends Component {
       value: '',
       description: '',
       currency: 'USD',
-      method: 'Cartão de crédito',
+      method: 'Dinheiro',
       tag: 'Lazer',
       todascurrencys: null,
     };
@@ -36,7 +37,7 @@ class ExpensesForm extends Component {
       value: '',
       description: '',
       currency: 'USD',
-      method: 'Cartão de débito',
+      method: 'Dinheiro',
       tag: 'Lazer',
     }));
   }
@@ -56,7 +57,7 @@ class ExpensesForm extends Component {
   render() {
     const { value, description, currency, method, tag, todascurrencys } = this.state;
     return (
-      <div>
+      <div className="expenses">
         <label htmlFor="value">
           Despesa
           <input

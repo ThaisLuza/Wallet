@@ -1,0 +1,37 @@
+.expenses {
+  background-color: #707248;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.expenses input {
+  border-radius: 10px;
+  margin-left: 8px;
+  height: 30px;
+}
+
+select {
+  border-radius: 10px;
+  margin-left: 8px;
+  height: 30px;
+  padding: 5px;
+  background-color:white;
+  font-family: 'Coda';
+}
+
+.expenses button {
+  background-color: #154104;
+  border-radius: 12px;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-top: 10px;
+  color: #e8e6e7;
+}
