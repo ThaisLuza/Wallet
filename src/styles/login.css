@@ -1,0 +1,69 @@
+.divLogin {
+  align-items: center;
+  background-image: url('../dolar.webp');
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  object-fit: cover;
+}
+fieldset {
+  align-items: center;
+  background-color: #e8e6e7;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  justify-content: center;
+}
+
+fieldset h1 {
+  font-size: 60px;
+  font-family: 'Coda';
+  font-weight: 400;
+}
+
+label {
+  font-family: 'Coda';
+  font-weight: 400;
+}
+
+.loginInput {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.enabled {
+  background-color: #154104;
+  border-radius: 12px;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-top: 10px;
+  color: #e8e6e7;
+}
+.disabled {
+  border-radius: 12px;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.divLogin img {
+  object-fit: cover;
+  width: 70px;
+  height: 70px;
+}

@@ -1,0 +1,31 @@
+tr,
+th {
+  background-color: #2f301d;
+  padding: 20px 20px;
+  width: 100vw;
+  font-family: 'Coda';
+  color: white;
+}
+
+td {
+  background-color: white;
+  padding: 20px 20px;
+  width: 100vw;
+  font-family: 'Coda';
+  color: black;
+  text-align: center;
+}
+
+.btnDelete button {
+  background-color: #154104;
+  border-radius: 12px;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-top: 10px;
+  color: #e8e6e7;
+}

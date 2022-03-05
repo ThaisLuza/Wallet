@@ -1,0 +1,35 @@
+.header {
+  background-color:#b5b0a4;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  font-family: 'Coda';
+  font-weight: 400;
+  padding: 0 40px;
+  font-size: 23px;
+}
+.header h1{
+  font-family: 'Coda';
+  font-weight: 400;
+}
+
+.logo img {
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.email {
+  display: flex;
+  margin: 0 10px;
+
+}
+
+.email p {
+  margin: 0 5px;
+}
