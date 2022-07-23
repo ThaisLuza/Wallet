@@ -1,5 +1,5 @@
 # Wallet
- :dollar: Esse projeto front-end simmula uma carteira de controle de gastos com conversor de moedas, ao utilizar essa aplicação o usuário é  capaz de:
+ :dollar: Esse projeto front-end simula uma carteira de controle de gastos com conversor de moedas, ao utilizar essa aplicação o usuário é  capaz de:
 
   :heavy_check_mark: Adicionar e remover um gasto;  
   
